@@ -13,7 +13,7 @@ def create_and_install_venv(repo_path, package_names, params=None, create_venv=T
         create_venv (bool, optional): Whether to create a new virtual environment. Defaults to True.
         pip_command (str, optional): The pip command to use (e.g., 'install', 'uninstall'). Defaults to 'install'.
     """
-    if venv_path.endswith(".venv"):
+    if repo_path.endswith(".venv"):
         # If the path ends with .venv, use it as is
         venv_path = os.path.join(repo_path)
     else:
@@ -87,7 +87,7 @@ def main():
     pip_command = input("Enter the pip command to use (e.g., install, uninstall): ").lower()
     clear()
     print(f"LIVE COMMAND: pip {pip_command}")
-    params_input = input("Enter any pip parameters (e.g., --no-cache --verbose): ")
+    params_input = input("Enter any pip parameters (e.g., --no-cache --verbose -r): ")
     params = params_input.split() if params_input else []  # Split params, handle empty input
     clear()
     print(f"LIVE COMMAND: pip {pip_command} {params_input}")
